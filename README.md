@@ -35,4 +35,4 @@ Users can view the details of all events from all users. Editing and deleting ar
 3. Write accesses to your DB in "/db/db_connect.php";
 4. Write SMTP accesses to send Email-invites in "/mailer/sender.php";
 
-Used technologies: Jquery 3, AJAX, Bootstrap 4, phpMailer, fullcalendar.js, PHP 7, MySql DB
+Used technologies: Jquery 3, AJAX, Bootstrap 4, phpMailer, fullcalendar.js, PHP 7, MySql DB, OpenServer
