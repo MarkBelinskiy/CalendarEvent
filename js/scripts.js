@@ -47,7 +47,7 @@ $(document).ready(function() {
 		},
 		//event when we start to drag 'event', check rights, if have no them call alert
 		eventDragStart: function(event) {
-			console.log(event.data);
+			// console.log(event.data);
 			if (getCookie('user_group') == "0" || getCookie('id_author') == event.data.id_author) {} else {
 				alert("No! It's not your event.");
 				$('#calendar').fullCalendar('refetchEvents');
@@ -90,12 +90,12 @@ $(document).ready(function() {
 					}
 				})
 				.done(function(data) {
-					console.log(data);
+					// console.log(data);
 				});
 		},
 		//after click on the event call popup and add properties of the event
 		eventClick: function(event, element) {
-			console.log(event);
+			// console.log(event);
 			$('.modal-title').text(event.title);
 			if (getCookie('id_author') == event.data.id_author || getCookie('user_group') == 0) {
 				$(".js__after").after("<button type='button' data-id=" + event.id + " class='btn btn-danger js__deleteEvent'>Delete Event</button>");

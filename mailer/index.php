@@ -6,20 +6,26 @@ if(!empty($_POST['send']))
 {
 	if(!empty($_POST['to']))
 	{
-		$message_text = $_POST['to'];
-		$message_data = array(
-			'to'		=> $_POST['to'],
-			'title'		=> $sender->mail_content['title']
-			);
-		$mailSend = $sender->addToDB($message_data);
-		$mailSend = $sender->sendMail($sender->smtp_data, $message_data);
-		if($mailSend == 0) {
-			echo "Success!";
+		if (filter_var($_POST['to'], FILTER_VALIDATE_EMAIL)) {
+			
+
+			$message_text = $_POST['to'];
+			$message_data = array(
+				'to'		=> $_POST['to'],
+				'title'		=> $sender->mail_content['title']
+				);
+			$mailSend = $sender->addToDB($message_data);
+			$mailSend = $sender->sendMail($sender->smtp_data, $message_data);
+			if($mailSend == 0) {
+				echo "Success!";
+			} else {
+				echo "Fail :(";
+			}
 		} else {
-			echo "Fail :(";
+			echo "Wrong email";
 		}
 	} else {
-		die("enter email");
+		echo "enter email";
 	}
 } else {
 	//Invite form

@@ -1,5 +1,9 @@
 <?php 
-if ($_GET['email']) {
+if (array_key_exists('email', $_GET)) {
+	if (!filter_var($_GET['email'], FILTER_VALIDATE_EMAIL)) {
+		echo "bad";
+		die();
+	}
 	require_once '../db/db_connect.php';
 	$check_reg = "SELECT * from Authors WHERE email='{$_GET['email']}'";
 	$check_reg = $db->prepare($check_reg);

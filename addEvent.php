@@ -2,8 +2,7 @@
 	<form class="form-signin" id="addEventForm">
 		<h2 class="form-signin-heading">Add new event</h2>
 		<input type="text" id="inputIdAuthor" hidden class="form-control" value="<?php print_r($_COOKIE['id_author']); ?>" required>
-
-		<input type="text" id="inputName" class="form-control" placeholder="Name" value="" required>
+		<input type="text" id="inputName" class="form-control" placeholder="Name"  required>
 		<textarea name="desc" id="inputDesc" class="form-control" placeholder="Description" value="" required></textarea>
 		<div class="row">
 			<label for="example-date-input" class="col-12 col-form-label">Date start</label>
@@ -51,7 +50,6 @@
 				}
 			})
 			.done(function(data) {
-				console.log(data);
 				if (data == "good") {
 					$(".result-addEvent").html("Successful, <a href='/' class='close-link'>Close form</a>");
 					$('#calendar').fullCalendar( 'refetchEvents');

@@ -13,6 +13,9 @@
 require dirname(__FILE__) . '/utils.php';
 require_once '../../db/db_connect.php';
 
+function filter(&$value) {
+  $value = htmlspecialchars_decode($value);
+}
 function check_in_range($start_date, $end_date)
 {
   // Convert to timestamp
@@ -37,7 +40,7 @@ $get_events->execute();
 $input_arrays = $get_events->fetchAll(PDO::FETCH_ASSOC);
 // print_r($get_events->errorInfo());
 
-
+array_walk_recursive($input_arrays, "filter");
 
 foreach ($input_arrays as $key => $value) {
 	if (check_in_range($input_arrays[$key]['start'], $input_arrays[$key]['end']) == 0) {

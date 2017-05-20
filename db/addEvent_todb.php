@@ -1,4 +1,18 @@
 <?php
+//check request fields from front-end
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+	foreach ($_POST as $key => $value) {
+		$_POST[$key] = htmlspecialchars(stripslashes(trim($_POST[$key]))); 
+		if (empty($_POST[$key])) {
+			echo "bad";
+			die();
+		}
+	}
+} else {
+	die();
+	echo "bad";
+}
+
 require_once '../db/db_connect.php';
 
 $add_event = $db->prepare("INSERT INTO `Events` (id_author, name, description, date_start, date_end, color) VALUES (?,?,?,?,?,?)");
@@ -21,4 +35,5 @@ if ($add_event->execute()) {
 	echo 'bad';
 }
 $db = null;
+
 ?>
